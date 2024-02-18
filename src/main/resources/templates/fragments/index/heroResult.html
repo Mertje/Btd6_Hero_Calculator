@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <div th:fragment="results" class="basis-1/4 mb-2 w-full bg-blue-400 h-auto rounded-lg h-full">
+        <p class="tracking-tight text-white text-center pt-2">Calculated hero level</p>
+        <p class="text-white text-center font-bold text-lg pb-3" th:text="${details.getCalculatedLevel()}"></p>
+        <table class="text-left w-full">
+            <thead class="bg-blue-900 flex text-white w-full">
+                <tr class="flex w-full mt-1 mb-2">
+                    <th class="pl-2 w-1/2 text-center">Hero Level</th>
+                    <th class="pl-2 w-1/2 text-center">Round</th>
+                </tr>
+            </thead>
+            <tbody class="flex flex-col overflow-y-scroll w-full h-56 ">
+                <tr class="flex w-full border-solid border-b border-blue-900 odd:bg-blue-500" th:each="level: ${details.getLevelHistories()}">
+                    <td class="text-white pl-2 w-1/2 text-center" th:text="${level.level()}"></td>
+                    <td class="text-white pl-2 w-1/2 text-center" th:text="${level.round()}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</html>

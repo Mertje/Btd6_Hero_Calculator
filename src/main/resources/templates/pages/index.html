@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:replace="~{fragments/head :: head}"></th:block>
+        <title>BTD6 Hero calculator</title>
+    </head>
+    <body class="bg-sky-950">
+        <div th:replace="~{fragments/navigation :: navigation}"></div>
+        <div class="container mx-auto my-5">
+            <form class="flex flex-col lg:flex-row" id="form" hx-post="/api/v1/hero_calculate" hx-trigger="submit" hx-target="#resultsForm">
+                <div class="basis-1/4">
+                    <label class="flex w-full text-center text-white hover:bg-amber-600 mr-2 mb-2 bg-amber-500 cursor-pointer rounded-lg shadow">
+                        <input type="radio" name="mapDifficulty" class="hidden peer" value="beginner" checked required/>
+                        <span class="peer-checked:bg-amber-900 w-full mx-auto rounded-lg">
+                            <span class="flex flex-nowrap max-h-14 px-2.5 pt-2 ">
+                                <span class="mx-auto"><img class="max-w-full max-h-full mx-auto" th:src="@{/images/maps/MapBeginnerBtn.webp}" alt="Striker_Jones"/></span>
+                            </span>
+                            <span>Beginner (x1.0)</span>
+                        </span>
+                    </label>
+                    <label class="flex w-full text-center text-white hover:bg-amber-600 mr-2 mb-2 bg-amber-500 cursor-pointer rounded-lg shadow">
+                        <input type="radio" name="mapDifficulty" class="px-5 py-2.5 hidden peer" value="intermediate" />
+                        <span class="peer-checked:bg-amber-900 w-full mx-auto rounded-lg">
+                            <span class="flex flex-nowrap max-h-14 px-2.5 pt-2 ">
+                                <span class="mx-auto"><img class="max-w-full max-h-full mx-auto" th:src="@{/images/maps/MapIntermediateBtn.webp}" alt="Striker_Jones"/></span>
+                            </span>
+                            <span>Intermediate (x1.1)</span>
+                        </span>
+                    </label>
+                    <label class="flex w-full text-center text-white hover:bg-amber-600 mr-2 mb-2 bg-amber-500 cursor-pointer rounded-lg shadow">
+                        <input type="radio" name="mapDifficulty" class="px-5 py-2.5 hidden peer" value="advanced" />
+                        <span class="peer-checked:bg-amber-900 w-full mx-auto rounded-lg">
+                            <span class="flex flex-nowrap max-h-14 px-2.5 pt-2 ">
+                                <span class="mx-auto"><img class="max-w-full max-h-full mx-auto" th:src="@{/images/maps/MapAdvancedBtn.webp}" alt="Striker_Jones"/></span>
+                            </span>
+                            <span>Advanced (x1.2)</span>
+                        </span>
+                    </label>
+                    <label class="flex w-full text-center text-white hover:bg-amber-600 mb-2 bg-amber-500 cursor-pointer rounded-lg shadow">
+                        <input type="radio" name="mapDifficulty" class="px-6 py-2.5 hidden peer" value="expert" />
+                        <span class="peer-checked:bg-amber-900 w-full mx-auto rounded-lg">
+                            <span class="flex flex-nowrap max-h-14 px-2.5 pt-2 ">
+                                <span class="mx-auto"><img class="max-w-full max-h-full mx-auto" th:src="@{/images/maps/MapExpertBtn.webp}" alt="Striker_Jones"/></span>
+                            </span>
+                            <span>Expert (x1.3)</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="basis-1/4 mx-2">
+                    <label class="flex text-center text-white hover:bg-blue-700 mb-2 font-medium bg-blue-400 cursor-pointer rounded-lg shadow">
+                        <input type="radio" name="heroTier" class="px-5 py-2.5 hidden peer" value="1.0" checked required />
+                        <span class="peer-checked:bg-blue-900 mx-auto w-full rounded-lg">
+                            <span class="flex flex-nowrap max-h-14 px-2.5 pt-2 ">
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/base/StrikerJonesPortrait.webp}" alt="Striker_Jones"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/base/ObynGreenFootPortrait.webp}" alt="Obyn_green"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/base/QuincyPortrait.webp}" alt="Quincy"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/base/GwendolinPortrait.webp}" alt="Gwendolin"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/base/GeraldoPortrait.webp}" alt="Gwendolin"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/base/EtiennePortrait.webp}" alt="Etienne"/></span>
+                            </span>
+                            <span>Base Heroes</span>
+                        </span>
+                    </label>
+                    <label class="flex text-center text-white hover:bg-blue-700 mb-2 bg-blue-400 cursor-pointer rounded-lg shadow">
+                        <input type="radio" name="heroTier" class="px-5 py-2.5 hidden peer" value="1.425" />
+                        <span class="peer-checked:bg-blue-900 mx-auto w-full rounded-lg">
+                            <span class="flex flex-nowrap max-h-14 px-2.5 pt-2 ">
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1425/AdmiralBrickellPortrait.webp}" alt="Admiral_Brickell"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1425/EziliPortrait.webp}" alt="Ezili"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1425/PatFustyPortrait.webp}" alt="Pat_Fusty"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1425/SaudaPortrait.webp}" alt="Sauda"/></span>
+                            </span>
+                            <span>Heroes 1.425</span>
+                        </span>
+                    </label>
+                    <label class="flex text-center text-white hover:bg-blue-700 mb-2 bg-blue-400 cursor-pointer rounded-lg shadow">
+                        <input type="radio" name="heroTier" class="px-5 py-2.5 hidden peer" value="1.5" />
+                        <span class="peer-checked:bg-blue-900 mx-auto w-full rounded-lg">
+                            <span class="flex flex-nowrap max-h-14 px-2.5 pt-2 ">
+                                <span class="mx-auto"><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1500/BenjaminPortrait.webp}" alt="Benjamin"/></span>
+                                <span class="mx-auto"><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1500/PsiPortrait.webp}" alt="Psi"/></span>
+                            </span>
+                            <span>Heroes 1.5</span>
+                        </span>
+                    </label>
+                    <label class="flex text-center text-white hover:bg-blue-700 mb-2 bg-blue-400 cursor-pointer rounded-lg shadow">
+                        <input type="radio" name="heroTier" class="px-5 py-2.5 hidden peer" value="1.71" />
+                        <span class="peer-checked:bg-blue-900 mx-auto w-full rounded-lg">
+                            <span class="flex flex-nowrap max-h-14 px-2.5 pt-2 ">
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1710/AdoraPortrait.webp}" alt="Adora"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1710/CaptainChurchillPortrait.webp}" alt="Captain_churchill"/></span>
+                                <span><img class="max-w-full max-h-full mx-auto" th:src="@{/images/heroes/1710/CorvusPortrait.webp}" alt="Corvus"/></span>
+                            </span>
+                            <span>Heroes 1.75</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="basis-1/4 mx-2 mb-2 bg-amber-500 rounded-lg shadow">
+                    <div class=" px-5 py-2">
+                        <div class="flex">
+                            <div class="mr-2 text-center ">
+                                <label for="begin-round" class="bold text-white">Begin:</label>
+                                <input
+                                    type="number"
+                                    name="startingRound"
+                                    id="begin-round"
+                                    class="rounded-lg w-full mt-2 text-center p-2.5 bg-amber-50 border border-amber-300 text-amber-900 text-sm focus:ring-amber-500 focus:border-amber-500 block bg-amber-700 placeholder-amber-400 dark:text-white focus:ring-amber-500 focus:border-amber-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                    placeholder="1-99"
+                                    min="1"
+                                    required>
+                            </div>
+                            <div class="mr-2 text-center mr-auto ml-5">
+                                <label for="end-round" class="bold text-white">End:</label>
+                                <input
+                                    type="number"
+                                    id="end-round"
+                                    name="untilRound"
+                                    class="rounded-lg w-full mt-2 text-center p-2.5 bg-amber-50 border border-amber-300 text-amber-900 text-sm focus:ring-amber-500 focus:border-amber-500 block bg-amber-700 placeholder-amber-400 dark:text-white focus:ring-amber-500 focus:border-amber-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                    placeholder="2-100"
+                                    min="2"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="mr-2 text-center mb-5">
+                                <label for="amount-players" class="bold text-white">Player amount:</label>
+                                <input
+                                    type="number"
+                                    name="playerAmount"
+                                    id="amount-players"
+                                    class="rounded-lg w-full mt-2 text-center p-2.5 bg-amber-50 border border-amber-300 text-amber-900 text-sm focus:ring-amber-500 focus:border-amber-500 block bg-amber-700 placeholder-amber-400 dark:text-white focus:ring-amber-500 focus:border-amber-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                    placeholder="1-4"
+                                    value="1"
+                                    min="1"
+                                    max="4"
+                                    required>
+                            </div>
+                            <div class="mr-2 text-center mr-auto ml-5">
+                                <label for="hero-starting-level" class="bold text-white">Hero Starting level:</label>
+                                <input
+                                    type="number"
+                                    id="hero-starting-level"
+                                    name="startingLevel"
+                                    value="1"
+                                    class="rounded-lg w-full mt-2 text-center p-2.5 bg-amber-50 border border-amber-300 text-amber-900 text-sm focus:ring-amber-500 focus:border-amber-500 block bg-amber-700 placeholder-amber-400 dark:text-white focus:ring-amber-500 focus:border-amber-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                    placeholder="1-20"
+                                    min="1"
+                                    max="20"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="rounded-lg flex items-center ps-4 border border-amber-200 w-full bg-amber-700">
+                            <input
+                                id="monkey-knowledge"
+                                type="checkbox"
+                                name="allMonkeyKnowledge"
+                                value="true"
+                                checked
+                                class="w-4 h-4 text-white mt-1 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                            <input type="hidden" name="allMonkeyKnowledge" value="false" />
+                            <label for="monkey-knowledge" class="w-full py-4 ms-2 text-white">Enable all monkey knowledge</label>
+                        </div>
+                        <button type="submit" class="rounded-lg w-full py-2.5 px-5 me-2 my-5 text-white focus:outline-none bg-amber-700 border border-amber-200 hover:bg-amber-900">Calculate</button>
+                    </div>
+                </div>
+                <div class="basis-1/4 mb-2 w-full shadow" id="resultsForm">
+                </div>
+            </form>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </body>
+</html>
