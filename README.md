@@ -6,3 +6,7 @@ and play around with it.
 ## Project info
 
 The project is entirely written in java thymeleaf and HTMX.
+
+## Deployment info
+To run the project in docker: 
+```docker compose up```

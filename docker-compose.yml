@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  hero_xp:
+      build: .
+      container_name: btd6_hero_xp
+      ports:
+        - '8080:8080'
